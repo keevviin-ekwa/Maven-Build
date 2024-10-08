@@ -22,10 +22,7 @@ jobs:
       # Build the Java project using Maven 
       - name: Build with Maven
         run: mvn -B package --file pom.xml -DskipTests
-    
-      - name: copy files
-        run: mkdir javaApp && cp target/*jar-with-dependencies.jar javaApp
-        
+  
       # Step 5: Debug - List target directory contents
       - name: List target directory
         run: ls -la target
