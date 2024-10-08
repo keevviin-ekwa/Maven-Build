@@ -36,12 +36,12 @@ jobs:
     needs: build  # Run deploy job only if build job succeeds
     runs-on: ubuntu-latest
 
-    steps:
-      # Step 6: Trigger Jenkins deployment job after successful build
-      - name: Trigger Jenkins deployment
-        run: |
-          curl -X POST "http://localhost:8080/job/<JOB_NAME>/buildWithParameters?token=<JENKINS_API_TOKEN>&BUILD_ID=${{ github.run_id }}&GIT_COMMIT=${{ github.sha }}"
+    # steps:
+    #   # Step 6: Trigger Jenkins deployment job after successful build
+    #   - name: Trigger Jenkins deployment
+    #     run: |
+    #       curl -X POST "http://localhost:8080/job/<JOB_NAME>/buildWithParameters?token=<JENKINS_API_TOKEN>&BUILD_ID=${{ github.run_id }}&GIT_COMMIT=${{ github.sha }}"
 
-        env:
-          JENKINS_USER: ${{ secrets.JENKINS_USER }}
-          JENKINS_TOKEN: ${{ secrets.JENKINS_API_TOKEN }}
+    #     env:
+    #       JENKINS_USER: ${{ secrets.JENKINS_USER }}
+    #       JENKINS_TOKEN: ${{ secrets.JENKINS_API_TOKEN }}
