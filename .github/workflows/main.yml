@@ -17,12 +17,15 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '11'
-          distribution: 'temurin'
+          distribution: 'adopt'
 
       # Build the Java project using Maven 
       - name: Build with Maven
         run: mvn clean install
-
+        
+      # Step 5: Debug - List target directory contents
+      - name: List target directory
+        run: ls -la target
 
       # Step 5: Archive build artifacts (optional)
       - name: Archive build artifact
