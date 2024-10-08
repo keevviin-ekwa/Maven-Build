@@ -22,6 +22,8 @@ jobs:
       # Build the Java project using Maven 
       - name: Build with Maven
         run: mvn -B package --file pom.xml -DskipTests
+
+  
   
       # Step 5: Debug - List target directory contents
       - name: List target directory
@@ -31,7 +33,7 @@ jobs:
       - name: Archive build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: javaApp
+          name: package
           path: target/*.jar
 
   deploy:
