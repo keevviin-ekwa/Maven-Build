@@ -21,18 +21,21 @@ jobs:
 
       # Build the Java project using Maven 
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn -B package --file pom.xml
+    
+      - name: copy files
+        run: mkdir java-app && cp target/*.jar java-app
         
       # Step 5: Debug - List target directory contents
       - name: List target directory
         run: ls -la target
 
-      # Step 5: Archive build artifacts (optional)
-      - name: Archive build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: java-app
-          path: target/*.jar
+      # # Step 5: Archive build artifacts (optional)
+      # - name: Archive build artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: java-app
+      #     path: target/*.jar
 
   deploy:
     needs: build  # Run deploy job only if build job succeeds
