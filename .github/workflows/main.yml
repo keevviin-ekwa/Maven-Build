@@ -45,7 +45,7 @@ jobs:
       # Step 6: Trigger Jenkins deployment job after successful build
       - name: Trigger Jenkins deployment
         run: |
-          curl -X POST -L --user ${{ secrets.JENKINS_USER }}:"admin" "https://8ce0-69-157-125-23.ngrok-free.app/job/java-tomcat/buildWithParameters?token=${{secrets.JENKINS_API_TOKEN}}&BUILD_ID=${{ github.run_id }}&GIT_COMMIT=${{ github.sha }}"
+          curl -X POST "http://192.168.2.12:8080/job/java-tomcat/buildWithParameters?token=${{secrets.JENKINS_API_TOKEN}}&BUILD_ID=${{ github.run_id }}&GIT_COMMIT=${{ github.sha }}"
         env:
           JENKINS_USER: ${{ secrets.JENKINS_USER }}
           JENKINS_TOKEN: ${{ secrets.JENKINS_API_TOKEN }}
